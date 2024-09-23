@@ -4,17 +4,37 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
+void torre(int n2)
+{
+    if (n2 > 0)
+    {
+        printf("Direita\n");
+        torre(n2 - 1);
+    }
+}
+
+void rainha(int n3)
+{
+    if(n3 > 0)
+    {
+        printf("esquerda\n");
+        rainha(n3 - 1);
+    }
+}
+
 int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
     int i = 1;
     int opcao;
+    int quantidadetorre = 5;
+    int quantidaderainha = 8;
 
     printf("Quais das peças deseja mover?\n");
     printf("1. Bispo?\n");
     printf("2. Torre?\n");
     printf("3. Rainha?\n");
-    printf("4. Cavalo? \n");
+    printf("4. Cavalo?\n");
     printf("Selecione o número da opção que deseja:\n");
     scanf("%d", &opcao);
 
@@ -29,54 +49,59 @@ int main() {
         printf("A rainha movimenta-se 8 casas para a esquerda\n");
     } else if (opcao == 4)
     {
-        printf("O cavalo movimenta-se em L\n");
+        printf("O cavalo movimenta-se em L três para cima depois duas para direita\n");
 
     } else
     {
-        printf("você selecionou nenhuma das opções\n");
+        printf("Você selecionou nenhuma das opções\n");
     }
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
 
     switch (opcao)
     {
         case 1:
-               while( i <= 5) {
-                     printf("direita, cima\n");
+               for (int j = 1; j <= 5; j++)
+               {
+                   printf("direita\n");
+
+                   i = 1;
+
+               while( i <= 1) {
+                     printf("cima\n");
                      i++;
+               
                }
+            if (j == 6){
+            break;
+            }
+        }
         break;
         case 2:
-               do 
-               {
-                     printf("direita\n");
-                     i++;
-                     } while ( i <= 5);
+               torre(quantidadetorre);
         break;
         case 3:
-               for (int i = 1; i <= 8; i++)
-              {
-                  printf("esquerda\n");
-              }
+               rainha(quantidaderainha);
         break;
         case 4:
-               for (int i = 1; i < 2; i++)
+               for(int k = 1, l = 1; k <= 5; k++, l++)
                {
-                printf("baixo\n");
-                printf("baixo\n");
-                      while (i <= 3)
-                      {
-                        printf("esquerda\n");
-                        i++;
-                      }
-               }
+                if (k <=3 )
+                {
+                    printf("cima\n");
+                } else if (l == 4 || l == 5 )
+                {
+                    printf("direita\n");
 
+                }
+               }
         break;      
         default:
                 printf("Erro! Tente novamente.\n");
         break;
     }
+
+    // Implementação de Movimentação do Bispo
+    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
 
     // Implementação de Movimentação da Torre
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
